@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: macos-15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_16.2.app
+
+      - name: Resolve packages
+        run: xcodebuild -resolvePackageDependencies -scheme capsule
+
+      - name: Build
+        run: |
+          xcodebuild \
+            -scheme capsule \
+            -configuration Debug \
+            -destination 'platform=macOS' \
+            build \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Test
+        run: |
+          xcodebuild \
+            -scheme capsule \
+            -destination 'platform=macOS' \
+            test \
+            CODE_SIGNING_ALLOWED=NO
