@@ -4,11 +4,12 @@ on:
   release:
     types: [created]
 
+permissions:
+  contents: write
+      
 jobs:
   release:
     runs-on: macos-15
-    permissions:
-      contents: write
     steps:
       - uses: actions/checkout@v4
 
@@ -28,9 +29,10 @@ jobs:
             "$RUNNER_TEMP/capsule.xcarchive/Products/Applications/capsule.app" \
             "$RUNNER_TEMP/Capsule-${{ github.event.release.tag_name }}.zip"
 
-      - name: Upload asset
+      - name: Upload to Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: "$RUNNER_TEMP/Capsule-${{ github.event.release.tag_name }}.zip"
         env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh release upload "${{ github.event.release.tag_name }}" \
-            "$RUNNER_TEMP/Capsule-${{ github.event.release.tag_name }}.zip"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
