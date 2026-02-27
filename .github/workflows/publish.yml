@@ -32,7 +32,7 @@ jobs:
       - name: Upload to Release
         uses: softprops/action-gh-release@v2
         with:
-          files: "$RUNNER_TEMP/Capsule-${{ github.event.release.tag_name }}.zip"
+          files: "${{ runner.temp }}/Capsule-${{ github.event.release.tag_name }}.zip"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
