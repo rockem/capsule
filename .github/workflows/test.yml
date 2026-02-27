@@ -1,8 +1,6 @@
-name: CI
+name: test
 
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
 
@@ -18,15 +16,6 @@ jobs:
 
       - name: Resolve packages
         run: xcodebuild -resolvePackageDependencies -scheme capsule
-
-      - name: Build
-        run: |
-          xcodebuild \
-            -scheme capsule \
-            -configuration Debug \
-            -destination 'platform=macOS' \
-            build \
-            CODE_SIGNING_ALLOWED=NO
 
       - name: Test
         run: |

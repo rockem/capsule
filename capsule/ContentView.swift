@@ -5,8 +5,8 @@
 //  Created by eli segal on 26/02/2026.
 //
 
-import SwiftUI
 import AppKit
+import SwiftUI
 
 struct ContentView: View {
     @State private var command = ""
@@ -25,6 +25,7 @@ struct ContentView: View {
                     .foregroundStyle(.tertiary)
                     .lineLimit(1)
                     .truncationMode(.middle)
+                    .accessibilityIdentifier("currentDirectoryLabel")
 
                 HStack(spacing: 8) {
                     Image(systemName: "chevron.right")
@@ -40,6 +41,7 @@ struct ContentView: View {
                             NSApplication.shared.terminate(nil)
                             return .handled
                         }
+                        .accessibilityIdentifier("commandInputField")
 
                     if isRunning {
                         ProgressView()

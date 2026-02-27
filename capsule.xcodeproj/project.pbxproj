@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		52F9D07A2F50B38B00F3E154 /* SwiftTerm in Frameworks */ = {isa = PBXBuildFile; productRef = 52F9D0792F50B38B00F3E154 /* SwiftTerm */; };
+		58603A442F50F4BE003CE425 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58603A432F50F4BE003CE425 /* XCTest.framework */; };
+		58603A452F50F4BE003CE425 /* XCTest.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 58603A432F50F4BE003CE425 /* XCTest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,10 +29,25 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		58603A462F50F4BE003CE425 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				58603A452F50F4BE003CE425 /* XCTest.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		5270EC1B2F504A8E009EAFD2 /* capsule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = capsule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5270EC2C2F504A90009EAFD2 /* capsuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = capsuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5270EC362F504A90009EAFD2 /* capsuleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = capsuleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		58603A432F50F4BE003CE425 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -71,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58603A442F50F4BE003CE425 /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +119,7 @@
 		52F9D0782F50B38B00F3E154 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58603A432F50F4BE003CE425 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -161,6 +180,7 @@
 				5270EC322F504A90009EAFD2 /* Sources */,
 				5270EC332F504A90009EAFD2 /* Frameworks */,
 				5270EC342F504A90009EAFD2 /* Resources */,
+				58603A462F50F4BE003CE425 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
