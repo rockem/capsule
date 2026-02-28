@@ -11,6 +11,12 @@ final class CapsuleAppDriver {
 
     func launch() async {
         app.launch()
+
+        let statusItem = app.statusItems["Capsule"]
+        _ = statusItem.waitForExistence(timeout: 5)
+        statusItem.click()
+        app.menuItems["Open Capsule"].click()
+
         await testCase.fulfillment(
             of: [testCase.expectation(for: NSPredicate(format: "exists == true"),
                                       evaluatedWith: app.textFields["commandInputField"])],
@@ -30,6 +36,15 @@ final class CapsuleAppDriver {
         await testCase.fulfillment(
             of: [testCase.expectation(for: NSPredicate(format: "value LIKE[c] %@", path),
                                       evaluatedWith: label)],
+            timeout: timeout
+        )
+    }
+
+    func assertLastCommandHeader(_ command: String, timeout: TimeInterval = 10) async {
+        let header = app.staticTexts["lastCommandHeader"]
+        await testCase.fulfillment(
+            of: [testCase.expectation(for: NSPredicate(format: "value == %@", "$ \(command)"),
+                                      evaluatedWith: header)],
             timeout: timeout
         )
     }

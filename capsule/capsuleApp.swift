@@ -5,8 +5,8 @@
 //  Created by eli segal on 26/02/2026.
 //
 
-import SwiftUI
 import AppKit
+import SwiftUI
 
 // Borderless NSPanel that can still receive keyboard focus
 class FloatingPanel: NSPanel {
@@ -16,8 +16,12 @@ class FloatingPanel: NSPanel {
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     var panel: FloatingPanel!
+    var statusItem: NSStatusItem!
 
-    func applicationDidFinishLaunching(_ notification: Notification) {
+    func applicationDidFinishLaunching(_: Notification) {
+        // Hide Dock icon — Capsule lives only in the menu bar
+        NSApp.setActivationPolicy(.accessory)
+
         let hostingController = NSHostingController(rootView: ContentView())
         hostingController.sizingOptions = .preferredContentSize
 
@@ -33,8 +37,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         panel.isOpaque = false
         panel.hasShadow = true
         panel.isMovableByWindowBackground = true
-        panel.center()
-        panel.makeKeyAndOrderFront(nil)
+        DispatchQueue.main.async { self.panel.center() }
+
+        // Menu bar status item
+        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
+        if let button = statusItem.button {
+            if let image = NSImage(named: "AppIcon") {
+                image.size = NSSize(width: 18, height: 18)
+                button.image = image
+            }
+            button.setAccessibilityLabel("Capsule")
+            let menu = NSMenu()
+            menu.addItem(withTitle: "Open Capsule", action: #selector(togglePanel), keyEquivalent: "")
+                .target = self
+            menu.addItem(.separator())
+            menu.addItem(withTitle: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
+            statusItem.menu = menu
+        }
+    }
+
+    @objc private func togglePanel() {
+        if panel.isVisible {
+            panel.orderOut(nil)
+        } else {
+            panel.makeKeyAndOrderFront(nil)
+            NSApp.activate(ignoringOtherApps: true)
+        }
     }
 }
 

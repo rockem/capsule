@@ -1,0 +1,29 @@
+included:
+  - capsule
+  - capsuleUITests
+
+excluded:
+  - capsule.xcodeproj
+
+opt_in_rules:
+  - array_init
+  - closure_spacing
+  - empty_count
+  - explicit_init
+  - first_where
+  - force_unwrapping
+  - modifier_order
+  - operator_usage_whitespace
+  - prefer_self_type_over_type_of_self
+  - sorted_imports
+  - yoda_condition
+
+line_length:
+  warning: 120
+  error: 160
+
+type_body_length:
+  warning: 200
+
+file_length:
+  warning: 300

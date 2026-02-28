@@ -1,16 +1,10 @@
-//
-//  ContentView.swift
-//  capsule
-//
-//  Created by eli segal on 26/02/2026.
-//
-
 import AppKit
 import SwiftUI
 
 struct ContentView: View {
     @State private var command = ""
-    @State private var result: CommandRunner.Result? = nil
+    @State private var lastCommand = ""
+    @State private var result: CommandRunner.Result?
     @State private var isRunning = false
     @State private var isOutputExpanded = false
     @State private var currentDirectory = FileManager.default.homeDirectoryForCurrentUser.path
@@ -38,7 +32,7 @@ struct ContentView: View {
                         .focused($focused)
                         .onSubmit(runCommand)
                         .onKeyPress(.escape) {
-                            NSApplication.shared.terminate(nil)
+                            NSApp.keyWindow?.orderOut(nil)
                             return .handled
                         }
                         .accessibilityIdentifier("commandInputField")
@@ -53,42 +47,22 @@ struct ContentView: View {
             .padding(.vertical, 16)
 
             if let result {
-                // Output panel
-                if isOutputExpanded && !result.output.isEmpty {
-                    ScrollView {
-                        Text(result.output)
-                            .font(.system(size: 13, design: .monospaced))
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(12)
-                            .textSelection(.enabled)
-                    }
-                    .frame(maxHeight: 300)
-                    .transition(.move(edge: .bottom).combined(with: .opacity))
+                if isOutputExpanded, !result.output.isEmpty {
+                    ResultPanel(result: result, lastCommand: lastCommand)
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
                 }
-
-                // Status strip — green for success, red for error
-                Button {
-                    withAnimation(.spring(duration: 0.25)) {
-                        isOutputExpanded.toggle()
-                    }
-                } label: {
-                    Rectangle()
-                        .fill(result.success ? Color.green.opacity(0.75) : Color.red.opacity(0.75))
-                        .frame(height: 4)
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.plain)
             }
         }
         .frame(width: 640)
         .background(.regularMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 12))
-        .onAppear { focused = true }
+        .onAppear { DispatchQueue.main.async { focused = true } }
     }
 
     private func runCommand() {
         let cmd = command.trimmingCharacters(in: .whitespaces)
         guard !cmd.isEmpty, !isRunning else { return }
+        lastCommand = cmd
         command = ""
         isRunning = true
         result = nil

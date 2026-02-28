@@ -6,7 +6,7 @@ on:
 
 permissions:
   contents: write
-      
+
 jobs:
   release:
     runs-on: macos-15
@@ -35,4 +35,3 @@ jobs:
           files: "${{ runner.temp }}/Capsule-${{ github.event.release.tag_name }}.zip"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
