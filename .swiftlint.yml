@@ -1,5 +1,6 @@
 included:
   - capsule
+  - capsuleTests
   - capsuleUITests
 
 excluded:
@@ -11,7 +12,6 @@ opt_in_rules:
   - empty_count
   - explicit_init
   - first_where
-  - force_unwrapping
   - modifier_order
   - operator_usage_whitespace
   - prefer_self_type_over_type_of_self
