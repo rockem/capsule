@@ -25,19 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let hostingController = NSHostingController(rootView: ContentView())
         hostingController.sizingOptions = .preferredContentSize
 
-        panel = FloatingPanel(
-            contentRect: .zero,
-            styleMask: .borderless,
-            backing: .buffered,
-            defer: false
-        )
-        panel.contentViewController = hostingController
-        panel.level = .floating
-        panel.backgroundColor = .clear
-        panel.isOpaque = false
-        panel.hasShadow = true
-        panel.isMovableByWindowBackground = true
-        DispatchQueue.main.async { self.panel.center() }
+        panel = createMainPanel(hostingController)
 
         // Menu bar status item
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
@@ -54,6 +42,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             menu.addItem(withTitle: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
             statusItem.menu = menu
         }
+    }
+
+    fileprivate func createMainPanel(_ hostingController: NSHostingController<ContentView>) -> FloatingPanel {
+        panel = FloatingPanel(
+            contentRect: .zero,
+            styleMask: .borderless,
+            backing: .buffered,
+            defer: false
+        )
+        panel.contentViewController = hostingController
+        panel.level = .floating
+        panel.backgroundColor = .clear
+        panel.isOpaque = false
+        panel.hasShadow = true
+        panel.isMovableByWindowBackground = true
+        DispatchQueue.main.async { self.panel.center() }
+        return panel
     }
 
     @objc private func togglePanel() {
