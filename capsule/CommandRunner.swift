@@ -37,7 +37,7 @@ enum CommandRunner {
                     try p.run()
                     p.waitUntilExit()
                     let raw = String(data: pipe.fileHandleForReading.readDataToEndOfFile(),
-                                    encoding: .utf8) ?? ""
+                                     encoding: .utf8) ?? ""
                     let (output, newDir) = parse(raw)
                     cont.resume(returning: Result(output: output,
                                                   exitCode: p.terminationStatus,

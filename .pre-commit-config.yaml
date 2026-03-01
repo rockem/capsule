@@ -1,0 +1,32 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-merge-conflict
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: check-added-large-files
+        exclude: \.appiconset/
+        args: [--maxkb=500]
+
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.43.0
+    hooks:
+      - id: markdownlint
+        args: [--config, .markdownlint.yaml]
+
+  # - repo: https://github.com/nicklockwood/SwiftFormat
+  #   rev: 0.55.3
+  #   hooks:
+  #     - id: swiftformat
+  #       args: [--swiftversion, "6.0"]
+
+  - repo: https://github.com/realm/SwiftLint
+    rev: 0.57.1
+    hooks:
+      - id: swiftlint
+        args: [--fix, --strict]

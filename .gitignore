@@ -1,0 +1,9 @@
+.DS_Store
+
+xcuserdata/
+build/
+*.xcscmblueprint
+*.xccheckout
+/*.gcno
+*.xcworkspace/
+playground.xcworkspace
