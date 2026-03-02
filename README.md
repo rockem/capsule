@@ -1,3 +1,5 @@
+![Capsule logo](./capsule/Assets.xcassets/AppIcon.appiconset/icon_128x128.png)
+
 # Capsule
 
 [![test](https://github.com/rockem/capsule/actions/workflows/test.yml/badge.svg)](https://github.com/rockem/capsule/actions/workflows/test.yml)
