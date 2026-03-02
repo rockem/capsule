@@ -1,10 +1,3 @@
-//
-//  capsuleApp.swift
-//  capsule
-//
-//  Created by eli segal on 26/02/2026.
-//
-
 import AppKit
 import SwiftUI
 
@@ -22,16 +15,35 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Hide Dock icon — Capsule lives only in the menu bar
         NSApp.setActivationPolicy(.accessory)
 
+        panel = createMainPanel()
+        statusItem = createMenuItem()
+    }
+
+    fileprivate func createMainPanel() -> FloatingPanel {
         let hostingController = NSHostingController(rootView: ContentView())
         hostingController.sizingOptions = .preferredContentSize
-
-        panel = createMainPanel(hostingController)
-
+        let newPanel = FloatingPanel(
+            contentRect: .zero,
+            styleMask: .borderless,
+            backing: .buffered,
+            defer: false
+        )
+        newPanel.contentViewController = hostingController
+        newPanel.level = .floating
+        newPanel.backgroundColor = .clear
+        newPanel.isOpaque = false
+        newPanel.hasShadow = true
+        newPanel.isMovableByWindowBackground = true
+        DispatchQueue.main.async { newPanel.center() }
+        return newPanel
+    }
+    
+    fileprivate func createMenuItem() -> NSStatusItem {
         // Menu bar status item
-        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
+        let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         if let button = statusItem.button {
             if let image = NSImage(named: "AppIcon") {
-                image.size = NSSize(width: 18, height: 18)
+                image.size = NSSize(width: Appearence.menuBarIconSize, height: Appearence.menuBarIconSize)
                 button.image = image
             }
             button.setAccessibilityLabel("Capsule")
@@ -42,23 +54,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             menu.addItem(withTitle: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
             statusItem.menu = menu
         }
-    }
-
-    fileprivate func createMainPanel(_ hostingController: NSHostingController<ContentView>) -> FloatingPanel {
-        panel = FloatingPanel(
-            contentRect: .zero,
-            styleMask: .borderless,
-            backing: .buffered,
-            defer: false
-        )
-        panel.contentViewController = hostingController
-        panel.level = .floating
-        panel.backgroundColor = .clear
-        panel.isOpaque = false
-        panel.hasShadow = true
-        panel.isMovableByWindowBackground = true
-        DispatchQueue.main.async { self.panel.center() }
-        return panel
+        return statusItem
     }
 
     @objc private func togglePanel() {
@@ -72,7 +68,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 }
 
 @main
-struct capsuleApp: App {
+struct CapsuleApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     var body: some Scene {

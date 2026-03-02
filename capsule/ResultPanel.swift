@@ -1,8 +1,3 @@
-//
-//  ResultPanel.swift
-//  capsule
-//
-
 import SwiftUI
 
 struct ResultPanel: View {
@@ -13,22 +8,29 @@ struct ResultPanel: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
                 Text("$ \(lastCommand)")
-                    .font(.system(size: 14, design: .monospaced))
+                    .font(.system(size: Appearence.Font.commandHeader, design: .monospaced))
                     .foregroundStyle(.secondary)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(12)
+                    .padding(Appearence.Padding.output)
                     .accessibilityIdentifier("lastCommandHeader")
 
                 Divider()
 
                 Text(result.output)
-                    .font(.system(size: 13, design: .monospaced))
+                    .font(.system(size: Appearence.Font.commandOutput, design: .monospaced))
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(12)
+                    .padding(Appearence.Padding.output)
                     .textSelection(.enabled)
             }
         }
         .defaultScrollAnchor(.bottom)
-        .frame(maxHeight: 300)
+        .frame(maxHeight: Appearence.outputMaxHeight)
     }
+}
+
+#Preview {
+    ResultPanel(
+        result: CommandRunner.Result(output: "Hello, world!", exitCode: 0, newDirectory: nil),
+        lastCommand: "echo Hello, world!"
+    )
 }
