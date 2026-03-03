@@ -44,7 +44,7 @@ enum CommandRunner {
         }
     }
 
-    private static func parse(_ raw: String) -> (output: String, newDir: String?) {
+    static func parse(_ raw: String) -> (output: String, newDir: String?) {
         let marker = "\n\(pwdSentinel):"
         guard let range = raw.range(of: marker) else {
             return (raw.trimmingCharacters(in: .newlines), nil)
