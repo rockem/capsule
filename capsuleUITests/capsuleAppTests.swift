@@ -1,6 +1,6 @@
 import XCTest
 
-final class CapsuleUITests: XCTestCase {
+final class CapsuleAppTests: XCTestCase {
     override func setUpWithError() throws {
         continueAfterFailure = false
     }
