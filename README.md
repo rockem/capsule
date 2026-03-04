@@ -14,7 +14,8 @@ A minimal floating command launcher for macOS. Summon it, run a command, see the
 - **Always-on-top input bar** — type a command and press Return
 - **Live current directory** — shown above the prompt; updates when you `cd`
 - **Collapsible output panel** — expands automatically after each command
-- **Always in reach** - Invoke from menu bar
+- **Always in reach** - invoke from menu bar or a shortcut
+- **Stop running command** - stop running command with ease
 
 ## Requirements
 
