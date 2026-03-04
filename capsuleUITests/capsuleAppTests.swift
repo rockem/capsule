@@ -5,14 +5,14 @@ final class CapsuleAppTests: XCTestCase {
         continueAfterFailure = false
     }
 
-    @MainActor func testChangeDirectoryToUsers() async throws {
+    @MainActor func testChangeDirectoryToUsers() async {
         let capsule = CapsuleAppDriver(self)
         await capsule.launch()
         capsule.execute("cd /Users")
         await capsule.assertCurrentDirectory("/Users")
     }
 
-    @MainActor func testLastCommandShownInResultPanel() async throws {
+    @MainActor func testLastCommandShownInResultPanel() async {
         let capsule = CapsuleAppDriver(self)
         await capsule.launch()
         capsule.execute("echo hello")

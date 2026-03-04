@@ -10,7 +10,12 @@ struct ContentView: View {
             // Input row
             VStack(alignment: .leading, spacing: 4) {
                 Text(vm.currentDirectory)
-                    .font(.system(size: Appearence.Font.directory, design: .monospaced))
+                    .font(
+                        .system(
+                            size: Appearence.Font.directory,
+                            design: .monospaced
+                        )
+                    )
                     .foregroundStyle(.tertiary)
                     .lineLimit(1)
                     .truncationMode(.middle)
@@ -19,10 +24,21 @@ struct ContentView: View {
                 HStack(spacing: 8) {
                     Image(systemName: "chevron.right")
                         .foregroundStyle(.secondary)
-                        .font(.system(size: Appearence.Font.prompt, weight: .medium, design: .monospaced))
+                        .font(
+                            .system(
+                                size: Appearence.Font.prompt,
+                                weight: .medium,
+                                design: .monospaced
+                            )
+                        )
 
                     TextField("Enter command…", text: $vm.command)
-                        .font(.system(size: Appearence.Font.commandInput, design: .monospaced))
+                        .font(
+                            .system(
+                                size: Appearence.Font.commandInput,
+                                design: .monospaced
+                            )
+                        )
                         .textFieldStyle(.plain)
                         .focused($focused)
                         .onSubmit(vm.runCommand)
@@ -44,7 +60,9 @@ struct ContentView: View {
             if let result = vm.result {
                 if vm.isOutputExpanded, !result.output.isEmpty {
                     ResultPanel(result: result, lastCommand: vm.lastCommand)
-                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                        .transition(
+                            .move(edge: .bottom).combined(with: .opacity)
+                        )
                 }
             }
         }

@@ -1,0 +1,8 @@
+# .swiftformat
+--swiftversion 6.0
+
+# Rules that overlap with SwiftLint rules — let SwiftLint own these
+--disable modifierOrder
+--disable sortedImports
+--disable trailingCommas
+--disable wrapMultilineStatementBraces
