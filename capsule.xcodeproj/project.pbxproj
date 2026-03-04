@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		52F9D07A2F50B38B00F3E154 /* SwiftTerm in Frameworks */ = {isa = PBXBuildFile; productRef = 52F9D0792F50B38B00F3E154 /* SwiftTerm */; };
 		58603A442F50F4BE003CE425 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58603A432F50F4BE003CE425 /* XCTest.framework */; };
 		58603A452F50F4BE003CE425 /* XCTest.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 58603A432F50F4BE003CE425 /* XCTest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -73,7 +72,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52F9D07A2F50B38B00F3E154 /* SwiftTerm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,7 +142,6 @@
 			);
 			name = capsule;
 			packageProductDependencies = (
-				52F9D0792F50B38B00F3E154 /* SwiftTerm */,
 			);
 			productName = capsule;
 			productReference = 5270EC1B2F504A8E009EAFD2 /* capsule.app */;
@@ -230,7 +227,6 @@
 			mainGroup = 5270EC122F504A8E009EAFD2;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				5270EC4D2F50A510009EAFD2 /* XCRemoteSwiftPackageReference "SwiftTerm" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5270EC1C2F504A8E009EAFD2 /* Products */;
@@ -588,25 +584,6 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		5270EC4D2F50A510009EAFD2 /* XCRemoteSwiftPackageReference "SwiftTerm" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/migueldeicaza/SwiftTerm";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.5.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		52F9D0792F50B38B00F3E154 /* SwiftTerm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5270EC4D2F50A510009EAFD2 /* XCRemoteSwiftPackageReference "SwiftTerm" */;
-			productName = SwiftTerm;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5270EC132F504A8E009EAFD2 /* Project object */;
 }

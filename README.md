@@ -1,7 +1,10 @@
+![Capsule logo](./capsule/Assets.xcassets/AppIcon.appiconset/icon_128x128.png)
+
 # Capsule
 
 [![test](https://github.com/rockem/capsule/actions/workflows/test.yml/badge.svg)](https://github.com/rockem/capsule/actions/workflows/test.yml)
 [![release](https://img.shields.io/github/release/tterb/PlayMusic.svg?style=flat)](https://github.com/rockem/capsule/releases)
+
 A minimal floating command launcher for macOS. Summon it, run a command, see the result — then get out of the way.
 
 ![Capsule screenshot](docs/write-command-screenshot.png)

@@ -37,7 +37,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         DispatchQueue.main.async { newPanel.center() }
         return newPanel
     }
-    
+
     fileprivate func createMenuItem() -> NSStatusItem {
         // Menu bar status item
         let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
