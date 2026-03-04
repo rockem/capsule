@@ -17,8 +17,8 @@ A minimal floating command launcher for macOS. Summon it, run a command, see the
 - **Always-on-top input bar** — type a command and press Return
 - **Live current directory** — shown above the prompt; updates when you `cd`
 - **Collapsible output panel** — expands automatically after each command
-- **Always in reach** — invoke from the menu bar or a keyboard shortcut *(shortcut coming soon)*
-- **Stop running command** — cancel a long-running command with ease *(coming soon)*
+- **Always in reach** — invoke from the menu bar or a keyboard shortcut _(shortcut coming soon)_
+- **Stop running command** — cancel a long-running command with ease _(coming soon)_
 
 ## Requirements
 
@@ -28,7 +28,8 @@ A minimal floating command launcher for macOS. Summon it, run a command, see the
 
 1. Download the latest `.dmg` from [Releases](https://github.com/rockem/capsule/releases)
 2. Open the `.dmg` and drag **Capsule** to your Applications folder
-3. Launch Capsule — if macOS blocks the app, right-click it in Finder and choose **Open**, then confirm in the dialog (or go to **System Settings → Privacy & Security** and click **Open Anyway**)
+3. Launch Capsule — if macOS blocks the app, right-click it in Finder and choose **Open**,
+   then confirm in the dialog (or go to **System Settings → Privacy & Security** and click **Open Anyway**)
 4. A capsule icon appears in the menu bar
 
 > Capsule runs as a menu-bar-only app; no Dock icon is shown.
