@@ -10,7 +10,7 @@ enum OutputParser {
 
     static func parse(_ raw: String) -> ParsedOutput {
         let marker = "\n\(pwdSentinel):"
-        guard let range = raw.range(of: marker) else {
+        guard let range = raw.range(of: marker, options: .backwards) else {
             return ParsedOutput(output: raw.trimmingCharacters(in: .newlines), newDirectory: nil)
         }
         let output = String(raw[..<range.lowerBound]).trimmingCharacters(in: .newlines)

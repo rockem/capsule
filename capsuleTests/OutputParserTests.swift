@@ -52,4 +52,12 @@ struct OutputParserTests {
             newDirectory: "/tmp/café & more"
         )
     }
+
+    @Test func parseWithSentinelInTheOutput() {
+        verifyOutputAndDirectory(
+            raw: "--\n\(OutputParser.pwdSentinel) hello\n\(OutputParser.pwdSentinel):/tmp",
+            output: "--\n\(OutputParser.pwdSentinel) hello",
+            newDirectory: "/tmp"
+        )
+    }
 }

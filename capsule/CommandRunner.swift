@@ -17,7 +17,7 @@ enum CommandRunner {
 
                 // cd to current dir, run the command, capture exit code + new PWD
                 let escaped = directory.replacingOccurrences(of: "'", with: "'\\''")
-                let script = "cd '\(escaped)' 2>/dev/null; \(command); _ec=$?; printf '\\n\(OutputParser.pwdSentinel):%s' \"$PWD\"; exit $_ec"
+                let script = "cd '\(escaped)'; \(command); _ec=$?; printf '\\n\(OutputParser.pwdSentinel):%s' \"$PWD\"; exit $_ec"
 
                 p.executableURL = URL(fileURLWithPath: shell)
                 p.arguments = ["-l", "-c", script]
